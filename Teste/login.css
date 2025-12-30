@@ -1,0 +1,100 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: Verdana, Tahoma, sans-serif;
+    background: linear-gradient(200deg, #00005a, #1a1a8a);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caixa principal */
+.caixa1 {
+    width: 100%;
+    max-width: 400px;
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.caixa1 h1 {
+    color: #00005A;
+    margin-bottom: 10px;
+    font-size: 26px;
+}
+
+.caixa1 p {
+    color: #555;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+/* Campos */
+.campo {
+    margin-bottom: 15px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Efeito focus */
+.campo input:focus {
+    border-color: #00005A;
+    box-shadow: 0 0 5px rgba(0, 0, 90, 0.4);
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #00005A;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+/* Hover no botão */
+button:hover {
+    background-color: #1a1a8a;
+    transform: translateY(-2px);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .caixa1 {
+        margin: 30px;
+    }
+}

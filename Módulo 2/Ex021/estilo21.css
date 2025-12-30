@@ -1,0 +1,27 @@
+body{
+    font-family: arial;
+}
+
+
+h1{
+    padding: 20px;
+    border: 2px solid aqua;
+    /*margin: auto;  deixa automaticamente centralizado*/
+    /*outline: 5px dashed salmon;*/
+
+    background-color: azure;
+    width: 450px;
+    height: auto;
+    text-align: center;
+    
+    justify-content: center;
+
+}
+
+.centralizar{
+    display: flex;
+    align-items: center;
+}
+a{
+    border: 2px dashed lightgreen;
+}

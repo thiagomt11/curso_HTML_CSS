@@ -1,0 +1,152 @@
+body{
+    background-color: #84E1AD;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+
+}
+
+header{
+    background-image: linear-gradient(to bottom,#3CD983,#2A9559,#1A5C38);
+    padding-top: 1px;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 2px 5px rgb(0, 0, 0);
+    margin-bottom: 0;
+    padding-bottom: 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.39);
+}
+
+header > nav{
+    text-align: left;
+    text-shadow: none;
+    margin: 0px 0px 0px 20px;
+    padding-bottom: 5px;
+
+}
+
+.link{
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px
+}
+
+.link:hover{
+    text-decoration: underline;
+}
+
+#corpo{
+    background-color: white;
+    display: block;
+    width: 95vw;
+    max-width: 900px;
+    margin: auto;
+    padding: 10px 15px 10px 15px;
+    box-shadow: 2px 3px 8px  rgba(0, 0, 0, 0.39);
+    border-radius: 0px 0px 7px 7px;
+}
+
+#historia-android{
+    margin: 0;
+}
+
+
+.textos{
+    text-align: justify;
+    text-indent: 25px;
+}
+
+.textos > h1, .textos h2{
+    text-indent: 10px;
+    background-image: linear-gradient(to right,#84e1ac48,white);
+    color: #1A5C38;
+    width: auto;
+}
+
+picture{
+    justify-items: center;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+.center img{
+    max-width: 100%;
+    height: 100%;
+    object-fit:cover;
+}
+
+footer{
+    background-color: #0c2919;
+    color: white;
+    text-align: center;
+    padding: 5px 0px 5px 0px;
+    margin: 10px 0 0 0;
+    font-style: italic;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+
+}
+
+footer > p{
+    margin: 0;
+}
+
+.fundo-video{
+    background-color: #0c2919;
+    margin: 0;
+    padding: 0;
+    display:flex;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+
+}
+
+.fundo-video > iframe{
+    border-radius: 10px;
+    max-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 95%;
+    height: 95%;
+}
+
+#box-final{
+    background-color:#84e1ac6e;
+    border-radius: 8px;
+    padding-bottom: 10px;
+
+}
+
+#box-final > h3{
+    background-color: #1a9b16;
+    color: white;
+    font-size: medium;
+    padding: 5px;
+    border-radius: 8px 8px 0px 0px;
+    text-indent: 5px;
+}
+
+#box-final > article{
+    text-indent: 35px;
+    margin: 0px 8px 0px 8px;
+}
+
+#box-final > ul{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin: 16px;
+    list-style-type: square;
+}

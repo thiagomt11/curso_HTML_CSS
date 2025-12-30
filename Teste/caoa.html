@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Gestão Integrada - Final Assembly</title>
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome via CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .screen {
+            display: none;
+        }
+        
+        .screen.active {
+            display: block;
+        }
+        
+        .transition-fade {
+            animation: fadeIn 0.3s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .status-ok {
+            background-color: #10b981;
+        }
+        
+        .status-warning {
+            background-color: #f59e0b;
+        }
+        
+        .status-error {
+            background-color: #ef4444;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- ========== TELA DE LOGIN ========== -->
+    <div id="login-screen" class="screen active">
+        <div class="flex h-screen">
+            <!-- Lado Esquerdo: Vídeo Placeholder -->
+            <div class="w-2/5 bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
+                <div class="text-center">
+                    <div class="mb-6">
+                        <i class="fas fa-film text-gray-400" style="font-size: 80px;"></i>
+                    </div>
+                    <p class="text-gray-300 text-xl font-semibold">PLACEHOLDER VIDEO INDUSTRIA</p>
+                    <p class="text-gray-500 text-sm mt-2">Vídeo de apresentação será exibido aqui</p>
+                </div>
+            </div>
+            
+            <!-- Lado Direito: Formulário de Login -->
+            <div class="w-3/5 bg-white flex items-center justify-center">
+                <div class="w-full max-w-md px-8">
+                    <!-- Logo/Título -->
+                    <div class="text-center mb-10">
+                        <div class="inline-block bg-blue-900 rounded-lg p-4 mb-4">
+                            <i class="fas fa-industry text-white" style="font-size: 40px;"></i>
+                        </div>
+                        <h1 class="text-3xl font-bold text-gray-900">Final Assembly</h1>
+                        <p class="text-gray-600 mt-2">Portal de Gestão Integrada</p>
+                    </div>
+                    
+                    <!-- Formulário -->
+                    <form id="login-form" class="space-y-5">
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Usuário</label>
+                            <input 
+                                type="text" 
+                                id="username" 
+                                placeholder="Digite seu usuário"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent"
+                                required
+                            >
+                        </div>
+                        
+                        <div>
+                            <label class="block text-gray-700 font-semibold mb-2">Senha</label>
+                            <input 
+                                type="password" 
+                                id="password" 
+                                placeholder="Digite sua senha"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900 focus:border-transparent"
+                                required
+                            >
+                        </div>
+                        
+                        <button 
+                            type="submit"
+                            class="w-full bg-blue-900 hover:bg-blue-800 text-white font-bold py-3 px-4 rounded-lg transition duration-200 mt-6"
+                        >
+                            Entrar
+                        </button>
+                    </form>
+                    
+                    <p class="text-center text-gray-600 text-sm mt-6">
+                        Demonstração do Sistema
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ========== MENU PRINCIPAL (DASHBOARD) ========== -->
+    <div id="dashboard-screen" class="screen">
+        <!-- Cabeçalho -->
+        <nav class="bg-blue-900 text-white shadow-lg">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-industry text-2xl"></i>
+                    <h1 class="text-2xl font-bold">Final Assembly</h1>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <span class="text-sm">Bem-vindo, <strong id="user-display">Usuário</strong></span>
+                    <button 
+                        onclick="logout()"
+                        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition duration-200"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Conteúdo Principal -->
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-2">Pilares de Gestão</h2>
+            <p class="text-gray-600 mb-10">Selecione um módulo para acessar as ferramentas de gestão integrada</p>
+            
+            <!-- Grid de Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card: Pessoas -->
+                <div 
+                    onclick="navigateTo('pessoas')"
+                    class="bg-white rounded-lg shadow-lg hover:shadow-xl p-8 cursor-pointer transition duration-300 transform hover:scale-105 border-t-4 border-blue-500"
+                >
+                    <div class="text-5xl text-blue-500 mb-4">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Pessoas</h3>
+                    <p class="text-gray-600">Gestão de equipes, treinamentos e desenvolvimento</p>
+                </div>
+                
+                <!-- Card: Segurança -->
+                <div 
+                    onclick="navigateTo('seguranca')"
+                    class="bg-white rounded-lg shadow-lg hover:shadow-xl p-8 cursor-pointer transition duration-300 transform hover:scale-105 border-t-4 border-yellow-500"
+                >
+                    <div class="text-5xl text-yellow-500 mb-4">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Segurança</h3>
+                    <p class="text-gray-600">Controle de acesso e segurança operacional</p>
+                </div>
+                
+                <!-- Card: Meio Ambiente -->
+                <div 
+                    onclick="navigateTo('ambiente')"
+                    class="bg-white rounded-lg shadow-lg hover:shadow-xl p-8 cursor-pointer transition duration-300 transform hover:scale-105 border-t-4 border-green-500"
+                >
+                    <div class="text-5xl text-green-500 mb-4">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Meio Ambiente</h3>
+                    <p class="text-gray-600">Sustentabilidade e conformidade ambiental</p>
+                </div>
+                
+                <!-- Card: Qualidade -->
+                <div 
+                    onclick="navigateTo('qualidade')"
+                    class="bg-white rounded-lg shadow-lg hover:shadow-xl p-8 cursor-pointer transition duration-300 transform hover:scale-105 border-t-4 border-purple-500"
+                >
+                    <div class="text-5xl text-purple-500 mb-4">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Qualidade</h3>
+                    <p class="text-gray-600">Controle de qualidade e ferramentas de calibração</p>
+                </div>
+                
+                <!-- Card: Entrega -->
+                <div 
+                    onclick="navigateTo('entrega')"
+                    class="bg-white rounded-lg shadow-lg hover:shadow-xl p-8 cursor-pointer transition duration-300 transform hover:scale-105 border-t-4 border-orange-500"
+                >
+                    <div class="text-5xl text-orange-500 mb-4">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Entrega</h3>
+                    <p class="text-gray-600">Logística e cumprimento de prazos</p>
+                </div>
+                
+                <!-- Card: Custos -->
+                <div 
+                    onclick="navigateTo('custos')"
+                    class="bg-white rounded-lg shadow-lg hover:shadow-xl p-8 cursor-pointer transition duration-300 transform hover:scale-105 border-t-4 border-red-500"
+                >
+                    <div class="text-5xl text-red-500 mb-4">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Custos</h3>
+                    <p class="text-gray-600">Análise financeira e otimização de recursos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ========== TELAS INTERNAS (WIREFRAMES) ========== -->
+    
+    <!-- Pessoas -->
+    <div id="pessoas-screen" class="screen">
+        <div class="min-h-screen bg-gray-50">
+            <!-- Cabeçalho -->
+            <nav class="bg-blue-900 text-white shadow-lg">
+                <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-industry text-2xl"></i>
+                        <h1 class="text-2xl font-bold">Final Assembly</h1>
+                    </div>
+                    <button 
+                        onclick="logout()"
+                        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition duration-200"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Conteúdo -->
+            <div class="max-w-7xl mx-auto px-6 py-12">
+                <button 
+                    onclick="navigateTo('dashboard')"
+                    class="mb-6 bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-200"
+                >
+                    <i class="fas fa-arrow-left mr-2"></i>Voltar
+                </button>
+                
+                <div class="bg-white rounded-lg shadow-lg p-12 text-center">
+                    <i class="fas fa-users text-6xl text-blue-500 mb-4"></i>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Módulo Pessoas</h2>
+                    <p class="text-gray-600 text-lg">
+                        Este módulo está em desenvolvimento. Aqui serão exibidas funcionalidades de gestão de equipes, 
+                        treinamentos, avaliações de desempenho e desenvolvimento de colaboradores.
+                    </p>
+                    <div class="mt-8 grid grid-cols-3 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-blue-500">150</p>
+                            <p class="text-gray-600">Colaboradores</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-blue-500">12</p>
+                            <p class="text-gray-600">Treinamentos</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-blue-500">98%</p>
+                            <p class="text-gray-600">Presença</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Segurança -->
+    <div id="seguranca-screen" class="screen">
+        <div class="min-h-screen bg-gray-50">
+            <!-- Cabeçalho -->
+            <nav class="bg-blue-900 text-white shadow-lg">
+                <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-industry text-2xl"></i>
+                        <h1 class="text-2xl font-bold">Final Assembly</h1>
+                    </div>
+                    <button 
+                        onclick="logout()"
+                        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition duration-200"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Conteúdo -->
+            <div class="max-w-7xl mx-auto px-6 py-12">
+                <button 
+                    onclick="navigateTo('dashboard')"
+                    class="mb-6 bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-200"
+                >
+                    <i class="fas fa-arrow-left mr-2"></i>Voltar
+                </button>
+                
+                <div class="bg-white rounded-lg shadow-lg p-12 text-center">
+                    <i class="fas fa-shield-alt text-6xl text-yellow-500 mb-4"></i>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Módulo Segurança</h2>
+                    <p class="text-gray-600 text-lg">
+                        Este módulo está em desenvolvimento. Aqui serão exibidas funcionalidades de controle de acesso, 
+                        incidentes de segurança, EPIs e conformidade com normas de segurança operacional.
+                    </p>
+                    <div class="mt-8 grid grid-cols-3 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-yellow-500">0</p>
+                            <p class="text-gray-600">Incidentes</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-yellow-500">100%</p>
+                            <p class="text-gray-600">Conformidade</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-yellow-500">45</p>
+                            <p class="text-gray-600">Dias sem acidente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Meio Ambiente -->
+    <div id="ambiente-screen" class="screen">
+        <div class="min-h-screen bg-gray-50">
+            <!-- Cabeçalho -->
+            <nav class="bg-blue-900 text-white shadow-lg">
+                <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-industry text-2xl"></i>
+                        <h1 class="text-2xl font-bold">Final Assembly</h1>
+                    </div>
+                    <button 
+                        onclick="logout()"
+                        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition duration-200"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Conteúdo -->
+            <div class="max-w-7xl mx-auto px-6 py-12">
+                <button 
+                    onclick="navigateTo('dashboard')"
+                    class="mb-6 bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-200"
+                >
+                    <i class="fas fa-arrow-left mr-2"></i>Voltar
+                </button>
+                
+                <div class="bg-white rounded-lg shadow-lg p-12 text-center">
+                    <i class="fas fa-leaf text-6xl text-green-500 mb-4"></i>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Módulo Meio Ambiente</h2>
+                    <p class="text-gray-600 text-lg">
+                        Este módulo está em desenvolvimento. Aqui serão exibidas funcionalidades de sustentabilidade, 
+                        conformidade ambiental, gestão de resíduos e consumo de recursos.
+                    </p>
+                    <div class="mt-8 grid grid-cols-3 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-green-500">92%</p>
+                            <p class="text-gray-600">Reciclagem</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-green-500">15</p>
+                            <p class="text-gray-600">Certificações</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-green-500">-30%</p>
+                            <p class="text-gray-600">Emissões</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Entrega -->
+    <div id="entrega-screen" class="screen">
+        <div class="min-h-screen bg-gray-50">
+            <!-- Cabeçalho -->
+            <nav class="bg-blue-900 text-white shadow-lg">
+                <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-industry text-2xl"></i>
+                        <h1 class="text-2xl font-bold">Final Assembly</h1>
+                    </div>
+                    <button 
+                        onclick="logout()"
+                        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition duration-200"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Conteúdo -->
+            <div class="max-w-7xl mx-auto px-6 py-12">
+                <button 
+                    onclick="navigateTo('dashboard')"
+                    class="mb-6 bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-200"
+                >
+                    <i class="fas fa-arrow-left mr-2"></i>Voltar
+                </button>
+                
+                <div class="bg-white rounded-lg shadow-lg p-12 text-center">
+                    <i class="fas fa-truck text-6xl text-orange-500 mb-4"></i>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Módulo Entrega</h2>
+                    <p class="text-gray-600 text-lg">
+                        Este módulo está em desenvolvimento. Aqui serão exibidas funcionalidades de logística, 
+                        rastreamento de entregas, cumprimento de prazos e gestão de frota.
+                    </p>
+                    <div class="mt-8 grid grid-cols-3 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-orange-500">98.5%</p>
+                            <p class="text-gray-600">Pontualidade</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-orange-500">1,250</p>
+                            <p class="text-gray-600">Entregas/Mês</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-orange-500">45</p>
+                            <p class="text-gray-600">Veículos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Custos -->
+    <div id="custos-screen" class="screen">
+        <div class="min-h-screen bg-gray-50">
+            <!-- Cabeçalho -->
+            <nav class="bg-blue-900 text-white shadow-lg">
+                <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-industry text-2xl"></i>
+                        <h1 class="text-2xl font-bold">Final Assembly</h1>
+                    </div>
+                    <button 
+                        onclick="logout()"
+                        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition duration-200"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Conteúdo -->
+            <div class="max-w-7xl mx-auto px-6 py-12">
+                <button 
+                    onclick="navigateTo('dashboard')"
+                    class="mb-6 bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-200"
+                >
+                    <i class="fas fa-arrow-left mr-2"></i>Voltar
+                </button>
+                
+                <div class="bg-white rounded-lg shadow-lg p-12 text-center">
+                    <i class="fas fa-chart-line text-6xl text-red-500 mb-4"></i>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Módulo Custos</h2>
+                    <p class="text-gray-600 text-lg">
+                        Este módulo está em desenvolvimento. Aqui serão exibidas funcionalidades de análise financeira, 
+                        otimização de recursos, controle de despesas e ROI.
+                    </p>
+                    <div class="mt-8 grid grid-cols-3 gap-4">
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-red-500">R$ 2.5M</p>
+                            <p class="text-gray-600">Orçamento</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-red-500">-8%</p>
+                            <p class="text-gray-600">Redução YoY</p>
+                        </div>
+                        <div class="bg-gray-100 p-4 rounded-lg">
+                            <p class="text-2xl font-bold text-red-500">94%</p>
+                            <p class="text-gray-600">Utilização</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ========== QUALIDADE - SUBMENU ========== -->
+    <div id="qualidade-screen" class="screen">
+        <div class="min-h-screen bg-gray-50">
+            <!-- Cabeçalho -->
+            <nav class="bg-blue-900 text-white shadow-lg">
+                <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-industry text-2xl"></i>
+                        <h1 class="text-2xl font-bold">Final Assembly</h1>
+                    </div>
+                    <button 
+                        onclick="logout()"
+                        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition duration-200"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Conteúdo -->
+            <div class="max-w-7xl mx-auto px-6 py-12">
+                <button 
+                    onclick="navigateTo('dashboard')"
+                    class="mb-6 bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-200"
+                >
+                    <i class="fas fa-arrow-left mr-2"></i>Voltar
+                </button>
+                
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Módulo Qualidade</h2>
+                
+                <!-- Grid de Submódulos -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Equipe de Torque -->
+                    <div 
+                        onclick="navigateTo('torque')"
+                        class="bg-white rounded-lg shadow-lg hover:shadow-xl p-8 cursor-pointer transition duration-300 transform hover:scale-105 border-l-4 border-purple-500"
+                    >
+                        <div class="text-4xl text-purple-500 mb-4">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Equipe de Torque</h3>
+                        <p class="text-gray-600">Calibração e controle de estoque de ferramentas</p>
+                    </div>
+                    
+                    <!-- Controle de Processo -->
+                    <div 
+                        onclick="showPlaceholder('Controle de Processo')"
+                        class="bg-white rounded-lg shadow-lg hover:shadow-xl p-8 cursor-pointer transition duration-300 transform hover:scale-105 border-l-4 border-blue-400"
+                    >
+                        <div class="text-4xl text-blue-400 mb-4">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Controle de Processo</h3>
+                        <p class="text-gray-600">Monitoramento de parâmetros de produção</p>
+                    </div>
+                    
+                    <!-- Inspeção Final -->
+                    <div 
+                        onclick="showPlaceholder('Inspeção Final')"
+                        class="bg-white rounded-lg shadow-lg hover:shadow-xl p-8 cursor-pointer transition duration-300 transform hover:scale-105 border-l-4 border-green-400"
+                    >
+                        <div class="text-4xl text-green-400 mb-4">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Inspeção Final</h3>
+                        <p class="text-gray-600">Validação de qualidade antes da entrega</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ========== TORQUE - SISTEMA DE CALIBRAÇÃO E ESTOQUE ========== -->
+    <div id="torque-screen" class="screen">
+        <div class="min-h-screen bg-gray-50">
+            <!-- Cabeçalho -->
+            <nav class="bg-blue-900 text-white shadow-lg">
+                <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+                    <div class="flex items-center space-x-3">
+                        <i class="fas fa-industry text-2xl"></i>
+                        <h1 class="text-2xl font-bold">Final Assembly</h1>
+                    </div>
+                    <button 
+                        onclick="logout()"
+                        class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-semibold transition duration-200"
+                    >
+                        Logout
+                    </button>
+                </div>
+            </nav>
+            
+            <!-- Conteúdo -->
+            <div class="max-w-7xl mx-auto px-6 py-12">
+                <button 
+                    onclick="navigateTo('qualidade')"
+                    class="mb-6 bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-semibold transition duration-200"
+                >
+                    <i class="fas fa-arrow-left mr-2"></i>Voltar
+                </button>
+                
+                <h2 class="text-3xl font-bold text-gray-900 mb-2">Equipe de Torque</h2>
+                <p class="text-gray-600 mb-8">Sistema de Calibração e Controle de Estoque de Ferramentas</p>
+                
+                <!-- Dashboard Rápido -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <!-- Total de Ferramentas -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-blue-500">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm font-semibold">Total de Ferramentas</p>
+                                <p class="text-3xl font-bold text-gray-900 mt-2">45</p>
+                            </div>
+                            <div class="text-4xl text-blue-500">
+                                <i class="fas fa-wrench"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Calibrações Vencidas -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-red-500">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm font-semibold">Calibrações Vencidas</p>
+                                <p class="text-3xl font-bold text-red-600 mt-2">3</p>
+                            </div>
+                            <div class="text-4xl text-red-500">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Calibrações Próximas -->
+                    <div class="bg-white rounded-lg shadow-lg p-6 border-l-4 border-yellow-500">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-gray-600 text-sm font-semibold">Calibrações Próximas</p>
+                                <p class="text-3xl font-bold text-yellow-600 mt-2">7</p>
+                            </div>
+                            <div class="text-4xl text-yellow-500">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botões de Ação -->
+                <div class="flex gap-4 mb-8">
+                    <button 
+                        onclick="showAlert('Funcionalidade de Adicionar Ferramenta em desenvolvimento')"
+                        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition duration-200"
+                    >
+                        <i class="fas fa-plus mr-2"></i>Adicionar Ferramenta
+                    </button>
+                    <button 
+                        onclick="showAlert('Funcionalidade de Registrar Calibração em desenvolvimento')"
+                        class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition duration-200"
+                    >
+                        <i class="fas fa-check mr-2"></i>Registrar Calibração
+                    </button>
+                </div>
+                
+                <!-- Tabela de Ferramentas -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-800 text-white">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold">ID</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold">Nome da Ferramenta</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold">Marca/Modelo</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold">Localização</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold">Última Calibração</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold">Próxima Calibração</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold">Status</th>
+                                    <th class="px-6 py-4 text-left text-sm font-semibold">Estoque</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <!-- Linha 1 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 text-sm text-gray-900">TRQ-001</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Torquímetro Digital</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Snap-on / ATECH2F100</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Posto 1</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">15/10/2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">15/01/2025</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">OK</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">3</td>
+                                </tr>
+                                
+                                <!-- Linha 2 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 text-sm text-gray-900">TRQ-002</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Torquímetro Analógico</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Gedore / TORCOFIX</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Posto 2</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">20/08/2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">20/11/2024</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-semibold">VENCIDO</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">2</td>
+                                </tr>
+                                
+                                <!-- Linha 3 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 text-sm text-gray-900">TRQ-003</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Parafusadeira Elétrica</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Bosch / GSR 18V-60</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Posto 3</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">10/11/2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">10/12/2024</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold">PRÓXIMA</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">5</td>
+                                </tr>
+                                
+                                <!-- Linha 4 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 text-sm text-gray-900">TRQ-004</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Torquímetro Digital</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Snap-on / ATECH2F100</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Posto 4</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">25/09/2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">25/12/2024</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">OK</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">4</td>
+                                </tr>
+                                
+                                <!-- Linha 5 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 text-sm text-gray-900">TRQ-005</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Chave de Fenda Torquímetro</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Wiha / TorqueVario</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Posto 1</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">05/10/2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">05/01/2025</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">OK</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">6</td>
+                                </tr>
+                                
+                                <!-- Linha 6 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 text-sm text-gray-900">TRQ-006</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Parafusadeira Pneumática</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Atlas Copco / LBB 35</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Posto 2</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">30/07/2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">30/10/2024</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-semibold">VENCIDO</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">2</td>
+                                </tr>
+                                
+                                <!-- Linha 7 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 text-sm text-gray-900">TRQ-007</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Torquímetro Estalo</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Stahlwille / MANOSKOP</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Posto 3</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">15/11/2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">15/02/2025</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">OK</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">3</td>
+                                </tr>
+                                
+                                <!-- Linha 8 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 text-sm text-gray-900">TRQ-008</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Calibrador de Torque</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Snap-on / TORQUE ANALYZER</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Laboratório</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">12/09/2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">12/12/2024</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold">PRÓXIMA</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">1</td>
+                                </tr>
+                                
+                                <!-- Linha 9 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 text-sm text-gray-900">TRQ-009</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Parafusadeira Elétrica</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Makita / DF457D</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Posto 4</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">08/10/2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">08/01/2025</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">OK</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">4</td>
+                                </tr>
+                                
+                                <!-- Linha 10 -->
+                                <tr class="hover:bg-gray-50">
+                                    <td class="px-6 py-4 text-sm text-gray-900">TRQ-010</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Chave Dinamométrica</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Bahco / TORQUE WRENCH</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">Posto 1</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">18/08/2024</td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">18/11/2024</td>
+                                    <td class="px-6 py-4 text-sm">
+                                        <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-semibold">VENCIDO</span>
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-900">2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Legenda -->
+                <div class="mt-8 bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="font-bold text-gray-900 mb-4">Legenda de Status</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs font-semibold">OK</span>
+                            <span class="text-gray-600">Ferramenta calibrada e dentro do prazo</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="inline-block bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs font-semibold">PRÓXIMA</span>
+                            <span class="text-gray-600">Calibração vencendo em até 30 dias</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-semibold">VENCIDO</span>
+                            <span class="text-gray-600">Calibração expirada, requer ação imediata</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+        // Função para navegar entre telas
+        function navigateTo(screenName) {
+            // Ocultar todas as telas
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => {
+                screen.classList.remove('active');
+                screen.classList.add('transition-fade');
+            });
+            
+            // Mostrar a tela desejada
+            const targetScreen = document.getElementById(screenName + '-screen');
+            if (targetScreen) {
+                targetScreen.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+        }
+        
+        // Função para fazer logout
+        function logout() {
+            if (confirm('Tem certeza que deseja fazer logout?')) {
+                navigateTo('login');
+                document.getElementById('username').value = '';
+                document.getElementById('password').value = '';
+            }
+        }
+        
+        // Função para mostrar alerta de placeholder
+        function showPlaceholder(moduleName) {
+            alert(moduleName + ' está em desenvolvimento e será disponibilizado em breve.');
+        }
+        
+        // Função para mostrar alerta genérico
+        function showAlert(message) {
+            alert(message);
+        }
+        
+        // Event listener para o formulário de login
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (username && password) {
+                // Atualizar o nome do usuário no dashboard
+                document.getElementById('user-display').textContent = username;
+                
+                // Navegar para o dashboard
+                navigateTo('dashboard');
+            } else {
+                alert('Por favor, preencha todos os campos');
+            }
+        });
+    </script>
+</body>
+</html>

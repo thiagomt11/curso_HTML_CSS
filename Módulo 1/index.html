@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imagens/favicon_io/favicon-32x32.png" type="image/x-icon">
+    <title>CAOA Montadora</title>
+    <style>
+        body{
+            background-color: #00005A;
+            color: white;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            font-size: small;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CAOA Montadora - FA</h1>
+    <hr>
+    <p> <strong>Endereço <abbr title="Carlos Antonio Oliveira Andrade">CAOA</abbr> Anápolis:</strong> <em>Rua 11, Industrial Munir Calixto</em>
+    
+    <br><br><br>
+    <h2>Listas Ordenadas</h2>
+    <ol type="I">
+        <li>Acordar</li>
+        <li>Escovar os Dentes</li>
+        <li>Atividades de HTML</li>
+            <ul type="square">
+                <li>Paragrafos</li>
+                <li>Listas Ordenadas</li>
+                <li>Listas Não Ordenadas</li>
+            </ul>
+    </ol>
+
+    <h2>Listas Nao Ordenadas</h2>
+    <ul type="square">
+        <li>Arroz</li>
+        <li>Feijão</li>
+    </ul>
+
+    <h2>Listas de Definições</h2>
+    <dl>
+        <dt>HTML</dt>
+        <dd>Linguagem de marcação para a criação do conteúdo de um site.</dd>
+        <br>
+        <dt>CSS</dt>
+        <dd>Linguagem de marcação para a criação do design de um site</dd>
+        <br>
+        <dt>JavaScript</dt>
+        <dd>Linguagem de programação para a criação de interatividade de um site</dd>
+    </dl>
+    <br><br>
+    <h1>Links internos</h1>
+    <p> Aula 1 - <a href="Aula001.html" target="_self" rel="prev">Paragrafos</a></p>
+     
+    <h1>Links para Download</h1>
+    
+    <ul>
+        <li>
+            <a href="livro/SQL-EM-10-MINUTOS-POR-DIA.pdf" download="SQL-EM-10-MINUTOS-POR-DIA" type="application/pdf" type="_blank" style="color: white;">Baixar livro SQL em pdf</a>
+        </li>
+        
+        <li>
+            <a href="livro/SQL-EM-10-MINUTOS-POR-DIA.zip" download="SQL-EM-10-MINUTOS-POR-DIA" type="application/zip" style="color: white;">Baixar livro SQL em zip</a>
+        </li>
+    </ul>
+
+    <h1>Imagem Dinamica</h1>
+    <picture>
+        <source media="(max-width: 750px)" srcset="imagens/p.png" type="image/png">
+        <source media="(max-width: 1050px)" srcset="imagens/m.png" type="image/png">
+        <img src="imagens/g.png" alt="Imagem flexivel">
+    </picture>
+
+    <h1>Pega a pedrada do homem</h1>
+    <audio preload="auto" controls>
+        <source src="midia/talvez-voce-precise-de-mim.mp3" type="audio/mpeg">
+    </audio>
+
+    
+    <h1>Quer o clipe? Entao vai tomando (Hospedado Localmente)</h1>
+    <video preload="metadata" controls width="560" height="315" poster="imagens/veigh.jpg" frameborder="0" allow="accelerometer; autoplay;">
+        <source src="midia/talvez-voce-precise-de-mim.mp4" type="video/mp4">
+    </video>
+    
+    <h1>Videozao do youtube</h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/jPWsBuiy1rE?si=h88suIN2o6hUUYLT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    <br><br><br><br><br><br>
+    <small> Todos os direitos reservados &copy;</small>
+</body>
+</html>

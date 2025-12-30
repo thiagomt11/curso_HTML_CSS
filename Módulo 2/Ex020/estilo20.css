@@ -1,0 +1,81 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+div{
+    display: inline-block;
+    background-color: lightgray;
+    border: 0.5px solid black;
+    text-align: center;
+    height: auto;
+    width: 200px;
+    text-decoration: none;
+}
+
+
+
+
+div#d4{
+    background-color: white;
+    height: auto;
+    width: auto;
+    border: none;
+}
+
+
+div#d4 > p{
+    display: none;    
+}
+
+div#d4:hover > p{
+    display: block;
+    color: white;
+    background-color: red;
+}
+
+div#d4:hover{
+    color: red;
+}
+
+a{
+    font-weight: bold;
+    text-decoration: none;
+    color: red;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+a:visited{
+    color: darkred;
+}
+
+.especial:hover{
+    color: white;
+    background-color: darkred;
+    text-decoration: none;
+}
+
+.especial::before{
+    content: '>>';
+    font-weight: lighter;
+}
+
+.especial::after{
+    content: '<<';
+    font-weight: lighter;
+}
+
+
+.aula15{
+    color: red;
+}
+
+.aula15:visited{
+    color: darkred;
+}
+
+.aula15:active{
+    color: green;
+}

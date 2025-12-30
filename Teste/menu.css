@@ -1,0 +1,27 @@
+body {
+    background-color: #FFFFFF;
+    font-family: Verdana, Tahoma, sans-serif;
+}
+
+#titulo {
+    font: bold 25px Verdana;
+}
+
+.barra {
+    display: flex;
+    align-items: center; 
+    gap: 75px;
+    height: auto;
+    width: auto;
+    color: #000;   
+}
+
+.textos {
+    display: flex;
+    gap: 50px;         
+}
+
+hr {
+    border-width: 1px;
+    border-color: #00005A;
+}
