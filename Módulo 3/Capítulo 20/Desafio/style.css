@@ -53,14 +53,15 @@ header p a:hover{
 }
 
 article{
-    margin-bottom: 50px;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
 }
 
 .est-branca{
     background-color: white;
     box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     padding: 80px 20px;
-    line-height: 40px;
+    line-height: 2em;
     font-size: 1.5em;
     font-family: var(--fonte3);
 }
@@ -81,6 +82,7 @@ article{
 #est-final{
     margin-bottom: 0px;
 }
+
 footer{
     background-color: black;
     color: white;
