@@ -40,10 +40,6 @@ main{
     height: 471px;
 }
 
-#redes-sociais{
-    text-align: right;
-}
-
 #redes-sociais img{
     display: flex;
     flex-direction: column;
