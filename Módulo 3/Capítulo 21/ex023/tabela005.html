@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+    *{
+        margin: 0;
+        padding: 0;
+        font-size: 1em;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1{
+        margin: auto;
+        text-align: center;
+    }
+
+    table{
+        width: 500px;
+        border-collapse: collapse;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    /*thead tr th{
+        position: sticky;
+        top: -3px;
+    }*/
+
+
+    thead th{
+        padding: 10px;
+        background-color: rgba(39, 39, 39, 0.829);
+        border: 1px solid black;
+        color: white;
+    }
+
+    tfoot tr{
+        background-color: rgba(39, 39, 39, 0.829);
+        border: 1px solid black;
+        color: white;
+    }
+
+    tfoot tr td{
+        padding: 10px;
+        border: 1px solid black;
+        text-align: center;
+    }
+    
+    tbody td{
+        border: 1px solid black;
+        text-align: center;
+        padding: 5px;
+    }
+
+
+    .c-estado{
+        background-color: rgb(224, 147, 147);
+    }
+</style>
+<body>
+
+
+    <table>
+        <caption>Agrupando Colunas</caption>
+
+        <colgroup>
+            <col class="c-estado">
+            <col class="c-populacao">
+        </colgroup>
+
+        <thead>
+            <tr>
+                <th>Estado</th>
+                <th>População</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>São Paulo</td>
+                <td>45000000</td>
+            </tr>
+            <tr>
+                <td>Minas Gerais</td>
+                <td>21168791</td>
+            </tr>
+            <tr>
+                <td>Rio de Janeiro</td>
+                <td>17264943</td>
+            </tr>
+            <tr>
+                <td>Bahia</td>
+                <td>14900000</td>
+            </tr>
+            <tr>
+                <td>Paraná</td>
+                <td>11500000</td>
+            </tr>
+            <tr>
+                <td>Rio Grande do Sul</td>
+                <td>11300000</td>
+            </tr>
+            <tr>
+                <td>Pernambuco</td>
+                <td>9600000</td>
+            </tr>
+            <tr>
+                <td>Ceará</td>
+                <td>9200000</td>
+            </tr>
+            <tr>
+                <td>Pará</td>
+                <td>8700000</td>
+            </tr>
+            <tr>
+                <td>Santa Catarina</td>
+                <td>7600000</td>
+            </tr>
+            <tr>
+                <td>Goiás</td>
+                <td>7200000</td>
+            </tr>
+            <tr>
+                <td>Maranhão</td>
+                <td>7100000</td>
+            </tr>
+            <tr>
+                <td>Amazonas</td>
+                <td>4200000</td>
+            </tr>
+            <tr>
+                <td>Espírito Santo</td>
+                <td>4100000</td>
+            </tr>
+            <tr>
+                <td>Paraíba</td>
+                <td>4000000</td>
+            </tr>
+            <tr>
+                <td>Rio Grande do Norte</td>
+                <td>3600000</td>
+            </tr>
+            <tr>
+                <td>Mato Grosso</td>
+                <td>3600000</td>
+            </tr>
+            <tr>
+                <td>Alagoas</td>
+                <td>3300000</td>
+            </tr>
+            <tr>
+                <td>Piauí</td>
+                <td>3300000</td>
+            </tr>
+            <tr>
+                <td>Distrito Federal</td>
+                <td>3100000</td>
+            </tr>
+            <tr>
+                <td>Mato Grosso do Sul</td>
+                <td>2800000</td>
+            </tr>
+            <tr>
+                <td>Sergipe</td>
+                <td>2300000</td>
+            </tr>
+            <tr>
+                <td>Rondônia</td>
+                <td>1800000</td>
+            </tr>
+            <tr>
+                <td>Tocantins</td>
+                <td>1600000</td>
+            </tr>
+            <tr>
+                <td>Acre</td>
+                <td>900000</td>
+            </tr>
+            <tr>
+                <td>Amapá</td>
+                <td>880000</td>
+            </tr>
+            <tr>
+                <td>Roraima</td>
+                <td>650000</td>
+            </tr>
+        </tbody>
+
+    </table>
+</body>
+</html>
