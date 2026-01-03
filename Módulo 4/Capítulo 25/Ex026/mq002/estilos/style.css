@@ -1,3 +1,31 @@
 @charset "UTF-8";
 
 /* Todos os tipos de tela  */
+
+*{
+    margin: 0px;
+    padding: 0px;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(31, 64, 255);
+}
+
+h1{
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.box{
+    background-color: lightgray;
+    border: 1px dashed black;
+    border-radius: 5px;
+    padding: 30px;
+    width: 150px;
+    text-align: center;
+}

@@ -1,3 +1,18 @@
 @charset "UTF-8";
 
 /* Aparelhos em Paisagem */
+
+body{
+    background-image: url(../imagens/cev-landscape.jpg);
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-size: contain;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    margin: 0px 10px;
+}
