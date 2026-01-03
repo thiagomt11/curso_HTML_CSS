@@ -21,6 +21,10 @@ header h1{
     padding: 10px 0px;
 }
 
+menu{
+    display: none;
+}
+
 menu ul{
     list-style-type: none;
 }
@@ -61,3 +65,17 @@ article p{
     margin-bottom: 10px;
     text-align: justify;
 }
+
+#menu-burguer{
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    
+}
+
+#menu-burguer:hover{
+    background-color: rgb(52, 52, 155);
+    cursor: pointer;
+}
+
