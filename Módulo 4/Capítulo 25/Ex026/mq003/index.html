@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Query 003</title>
+    <style>
+        
+        /*declarações gerais*/
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-size: 1em;
+            font-family: Arial, Helvetica, sans-serif
+        }
+
+        body{
+            width: 100vw;
+            height: 100vh;
+            background-color: rgb(31, 64, 255);
+        }
+
+        h1{
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .box{
+            background-color: lightgray;
+            border: 1px dashed black;
+            border-radius: 5px;
+            padding: 30px;
+            width: 150px;
+            text-align: center;
+        }
+        
+        /*declarações retrato*/
+        
+        @media screen and (orientation: portrait) {
+            body{
+                background-image: url(imagens/cev-portrait.jpg);
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center bottom;
+            }
+
+            .container{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+        }
+
+        /*declarações paisagem*/
+        @media screen and (orientation: landscape){           
+            body{
+                background-image: url(imagens/cev-landscape.jpg);
+                background-repeat: no-repeat;
+                background-position: left bottom;
+                background-size: contain;
+            }
+
+            .container{
+                display: flex;
+                flex-direction: row;
+                gap: 15px;
+                justify-content: center;
+                margin: 0px 10px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <head>
+        <h1>Mudando a orientação do dispositivo.</h1>
+    </head>
+
+    <div class="container">
+        <div class="box">A</div>
+        <div class="box">B</div>
+        <div class="box">C</div>
+        <div class="box">D</div>
+    </div>
+</body>
+</html>
