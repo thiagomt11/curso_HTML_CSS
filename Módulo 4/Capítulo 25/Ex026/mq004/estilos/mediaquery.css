@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+/*
+Pequenas telas: 0 - 480px ESTÁ NO STYLE.CSS
+Celulares: 481px - 768px ESTÁ NO STYLE.CSS
+Tablets: 769px - 992px
+Notebooks e Tablets Maiores - 992px - 1279px
+Monitores e mais - 1280px+
+*/
+
+@media print{
+    body{
+        background-image: url(../imagens/back-print.jpg); /* nao tem como usar em impressao*/
+    }
+    #phone{display: none;}
+    #tablet{display: none;}
+    #pc{display: none;}
+    #tv{display: none;}
+    #print{display: block;}
+}
+
+@media screen and (min-width: 769px) and (max-width:992px) {
+    body{
+        background-image: url(../imagens/back-tablet.jpg);
+    }
+    #phone{display: none;}
+    #tablet{display: block;}
+    #pc{display: none;}
+    #tv{display: none;}
+    #print{display: none;}
+}
+
+@media screen and (min-width: 993px) and (max-width:1279px){
+    body{
+        background-image: url(../imagens/back-pc.jpg);
+    }
+    #phone{display: none;}
+    #tablet{display: none;}
+    #pc{display: block;}
+    #tv{display: none;}
+    #print{display: none;}
+}
+
+@media screen and (min-width: 1280px){
+    body{
+        background-image: url(../imagens/back-tv.jpg);
+    }
+
+    #phone{display: none;}
+    #tablet{display: none;}
+    #pc{display: none;}
+    #tv{display: block;}
+    #print{display: none;}
+
+}
