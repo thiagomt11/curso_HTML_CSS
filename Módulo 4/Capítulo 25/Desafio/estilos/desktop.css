@@ -8,4 +8,9 @@
     width: 60%;
     height: auto;
     border-radius: 20px 0 0 20px;
+    float: right;
+}
+
+#formulario{
+    float: left;
 }

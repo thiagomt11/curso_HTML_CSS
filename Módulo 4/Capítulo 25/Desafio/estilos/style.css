@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/*Geral e Mobile First*/
+/*Mobile First*/
 
 body,html{
     background-color: rgb(95, 15, 170);
@@ -24,8 +24,8 @@ main{
     transform: translate(-50%, -50%);   
     
     background-color: white;
-    width: 250px;
-    height: 500px;
+    width: 300px;
+    height: 600px;
     border-radius: 20px;
     box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
 }
@@ -56,4 +56,68 @@ main{
     font-size: 1em;
     color: rgb(80, 80, 80);
     text-align: justify;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.box{
+    display: flex;
+    gap: 10px;
+    border: 1px solid rgb(95, 15, 170);
+    padding: 3px 10px;
+    border-radius: 10px;
+    background-color: rgb(95, 15, 170);
+}
+
+.material-symbols-outlined{
+    color: white;
+    font-size: 1.5em;
+    padding: 0;
+}
+
+.box input{
+    border: 1px solid rgb(95, 15, 170);
+    border-radius: 10px;
+    padding: 8px 5px 8px 5px;
+    font-size: 0.8em;
+    width: 100%;
+}
+
+#entrar{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: rgb(95, 15, 170);
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid rgb(95, 15, 170);;
+}
+
+#entrar:hover{
+    background-color: rgb(116, 20, 206);
+
+}
+
+#esqueci-senha{
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background-color: white;
+    color: rgb(95, 15, 170);
+    font-size: 0.9em;
+    border: 2px solid rgb(95, 15, 170);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#esqueci-senha:hover{
+    background-color: rgb(219, 219, 219);
 }

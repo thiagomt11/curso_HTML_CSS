@@ -1,3 +1,18 @@
+
+body{
+    background-image: linear-gradient(to top, rgb(95, 15, 170), rgb(37, 182, 163));
+    box-sizing: border-box;
+}
+
+#formulario{
+    margin-top: 75px;
+}
+
+#formulario p {
+    font-size: 1.1em;
+    text-align: center;
+}
+
 #login{
     width: 85vw;
     display: flex;
@@ -5,7 +20,44 @@
 }
 
 #imagem{
-    width: 40%;
+    width: 45%;
     height: auto;
     border-radius: 20px 0 0 20px;
+}
+
+form{
+    width: 90%;
+    margin: 3px auto;
+    padding: 20px;
+}
+
+.box input{
+    padding: 12px;
+}
+
+#entrar{
+    background-color: rgb(37, 182, 163);
+    border: 1px solid rgb(37, 182, 163);
+    padding: 12px;
+}
+
+#entrar:hover{
+    background-color: rgb(31, 156, 140);
+    border: 1px solid rgb(22, 121, 107);
+}
+
+#esqueci-senha{
+    background-color: transparent;
+    border: none;
+    color: rgb(80, 80, 80);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#esqueci-senha:hover{
+    background-color: transparent;
+    border: none;
+    color: rgb(37, 182, 163);
+    text-decoration: underline;
+    cursor: pointer;
 }
