@@ -5,6 +5,8 @@
     box-sizing: border-box;
 }
 
+/*Geral e Mobile First*/
+
 body,html{
     background-color: rgb(95, 15, 170);
 }
@@ -24,7 +26,7 @@ main{
     background-color: white;
     width: 250px;
     height: 500px;
-    border-radius: 5px;
+    border-radius: 20px;
     box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
 }
 
@@ -35,8 +37,8 @@ main{
     background-repeat: no-repeat;
     width: 100%;
     height: 200px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 #formulario{
@@ -44,6 +46,10 @@ main{
     display: flex;
     flex-direction: column;
     gap: 15px;
+}
+
+#formulario h1{
+    text-align: center;
 }
 
 #formulario p {

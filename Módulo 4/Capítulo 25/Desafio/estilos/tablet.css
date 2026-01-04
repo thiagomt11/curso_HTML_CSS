@@ -1,0 +1,11 @@
+#login{
+    width: 85vw;
+    display: flex;
+    flex-direction: row;
+}
+
+#imagem{
+    width: 40%;
+    height: auto;
+    border-radius: 20px 0 0 20px;
+}
