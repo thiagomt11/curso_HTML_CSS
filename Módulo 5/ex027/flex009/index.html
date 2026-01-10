@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flex Box 007</title>
+    <title>Flex Box 009</title>
     <style>
         .container{
             background-color: salmon;
             display: flex;
-            flex-flow: row wrap;
-            height:400px;
+            flex-flow: row nowrap;
         }
 
         .item{
             background-color: aqua;
             border: 1px solid black;
-            padding: 40px;
+            flex: auto;
+            padding: 5px;
             text-align: center;
+
+            flex-basis: 100px;
         }
 
     </style>
@@ -24,19 +26,12 @@
 <body>
     <div class="container">
         <div class="item">A</div>
-        <div class="item">B</div>
+        <div class="item">Conteudo grande demais para ocupar tudo</div>
         <div class="item">C</div>
-        <div class="item">D</div>
+        <div class="item">conteudo normal</div>
         <div class="item">E</div>
-        <div class="item">F</div>
+        <div class="item">Conteudo</div>
         <div class="item">G</div>
-        <div class="item">H</div>
-        <div class="item">I</div>
-        <div class="item">J</div>
-        <div class="item">K</div>
-        <div class="item">L</div>
-        <div class="item">M</div>
-        <div class="item">N</div>
     </div>
 </body>
 </html>
