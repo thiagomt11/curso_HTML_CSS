@@ -1,0 +1,53 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+}
+
+.container{
+    display: grid;
+    grid-template: 1.3fr 0.8fr 7fr 0.5fr / 2fr 1fr;
+    width: 100vw;
+    height: 100vh;
+    gap:5px;
+}
+
+.item{
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#topo{
+    background-color: blue;
+    grid-area: 1 / 1 / -4 / -1;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#menu{
+    background-color: rgb(70, 70, 255);
+    grid-area: 2 / 1 / -3 / -1;
+    border-radius: 10px;
+}
+
+#principal{
+    background-color: rgb(126, 126, 255);
+    grid-area: 3 / 1 / -2 / -3;
+    border-radius: 10px;
+}
+
+#secundario{
+    background-color: rgb(182, 182, 252);
+    grid-area: 3 / 2 / -2 / -1;
+    border-radius: 10px;
+}
+
+#rodape{
+    background-color: rgb(224, 224, 255);
+    grid-area: 4 / 1 / -1 / -1;
+    border-radius: 10px;
+}
